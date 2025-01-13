@@ -3,11 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voetbal Website
-    </title>
+    <title>Voetbal pagina</title>
     <link rel="stylesheet" href="HomepaginaMVC.css">
 </head>
 <body>
-    
+    <header class="header">
+        <h1>JZ</h1>
+    </header>
+    <main class="main">
+        <section class="section clubs">
+            <h2>Clubs</h2>
+            <div class="carousel">
+                <button class="arrow left" onclick="scrollCarousel('clubs', -1)">&#9664;</button>
+                <div class="items" id="clubs">
+                    <div class="item"><p>Club 1</p></div>
+                    <div class="item"><p>Club 2</p></div>
+                    <div class="item"><p>Club 3</p></div>
+                    <div class="item"><p>Club 4</p></div>
+                </div>
+                <button class="arrow right" onclick="scrollCarousel('clubs', 1)">&#9654;</button>
+            </div>
+        </section>
+        <hr>
+        <section class="section spelers">
+            <h2>Spelers</h2>
+            <div class="carousel">
+                <button class="arrow left" onclick="scrollCarousel('spelers', -1)">&#9664;</button>
+                <div class="items" id="spelers">
+                    <div class="item"><p>Naam: Speler 1</p></div>
+                    <div class="item"><p>Naam: Speler 2</p></div>
+                    <div class="item"><p>Naam: Speler 3</p></div>
+                    <div class="item"><p>Naam: Speler 4</p></div>
+                </div>
+                <button class="arrow right" onclick="scrollCarousel('spelers', 1)">&#9654;</button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
