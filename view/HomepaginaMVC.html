@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JZ Layout</title>
+    <link rel="stylesheet" href="HomepaginaMVC.css">
+</head>
+<body>
+    <header class="header">
+        <h1>JZ</h1>
+        <div class="auth-buttons">
+            <button class="login-button" onclick="location.href='login.html'">Login</button>
+            <button class="register-button" onclick="location.href='register.html'">Register</button>
+        </div>
+    </header>
+    <main class="main">
+        <section class="section clubs">
+            <h2>Clubs</h2>
+            <div class="carousel">
+                <button class="arrow left" onclick="scrollCarousel('clubs', -1)">&#9664;</button>
+                <div class="items" id="clubs">
+                    <div class="item">Club 1</div>
+                    <div class="item">Club 2</div>
+                    <div class="item">Club 3</div>
+                    <div class="item">Club 4</div>
+                    <div class="item">Club 5</div>
+                    <div class="item">Club 6</div>
+                    <div class="item">Club 7</div>
+                    <div class="item">Club 8</div>
+                    <div class="item hidden">Club 9</div>
+                    <div class="item hidden">Club 10</div>
+                </div>
+                <button class="arrow right" onclick="scrollCarousel('clubs', 1)">&#9654;</button>
+            </div>
+        </section>
+        <hr>
+        <section class="section spelers">
+            <h2>Spelers</h2>
+            <div class="carousel">
+                <button class="arrow left" onclick="scrollCarousel('spelers', -1)">&#9664;</button>
+                <div class="items" id="spelers">
+                    <div class="item">Speler 1</div>
+                    <div class="item">Speler 2</div>
+                    <div class="item">Speler 3</div>
+                    <div class="item">Speler 4</div>
+                    <div class="item">Speler 5</div>
+                    <div class="item">Speler 6</div>
+                    <div class="item">Speler 7</div>
+                    <div class="item">Speler 8</div>
+                    <div class="item hidden">Speler 9</div>
+                    <div class="item hidden">Speler 10</div>
+                </div>
+                <button class="arrow right" onclick="scrollCarousel('spelers', 1)">&#9654;</button>
+            </div>
+        </section>
+        <hr>
+        <section class="section wedstrijden">
+            <h2>Wedstrijden</h2>
+            <div class="carousel">
+                <button class="arrow left" onclick="scrollCarousel('wedstrijden', -1)">&#9664;</button>
+                <div class="items" id="wedstrijden">
+                    <div class="item">Wedstrijd 1</div>
+                    <div class="item">Wedstrijd 2</div>
+                    <div class="item">Wedstrijd 3</div>
+                    <div class="item">Wedstrijd 4</div>
+                    <div class="item">Wedstrijd 5</div>
+                    <div class="item">Wedstrijd 6</div>
+                    <div class="item">Wedstrijd 7</div>
+                    <div class="item">Wedstrijd 8</div>
+                    <div class="item hidden">Wedstrijd 9</div>
+                    <div class="item hidden">Wedstrijd 10</div>
+                </div>
+                <button class="arrow right" onclick="scrollCarousel('wedstrijden', 1)">&#9654;</button>
+            </div>
+        </section>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
