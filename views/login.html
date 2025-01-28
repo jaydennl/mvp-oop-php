@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inloggen</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Inloggen</h2>
+        <form action="../views/index.html" method="post">
+            <input type="hidden" name="action" value="login">
+
+            <div class="form-group">
+                <label for="gebruikersnaam">Gebruikersnaam:</label>
+                <input type="text" id="gebruikersnaam" name="gebruikersnaam" required placeholder="Vul je gebruikersnaam in">
+            </div>
+
+            <div class="form-group">
+                <label for="wachtwoord">Wachtwoord:</label>
+                <input type="password" id="wachtwoord" name="wachtwoord" required placeholder="Vul je wachtwoord in">
+            </div>
+
+            <button class="btn" type="submit">Inloggen</button>
+        </form>
+
+        <div class="form-footer">
+            <p>Heb je nog geen account? <a href="register.php">Registreren</a></p>
+        </div>
+    </div>
+</body>
+</html>

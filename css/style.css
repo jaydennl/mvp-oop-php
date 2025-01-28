@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2b2b2b; /* Darker background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 99vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 25px 30px; /* Moderate padding */
+    border-radius: 15px; /* Balanced radius */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Moderate width */
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 18px; /* Slightly reduced margin */
+    color: #006e6d; /* Teal */
+    font-size: 22px; /* Slightly smaller font size */
+}
+
+.form-group {
+    margin-bottom: 18px; /* Reduced margin */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px; /* Moderate spacing */
+    font-weight: bold;
+    color: #333333; /* Dark grey */
+    font-size: 15px; /* Slightly smaller font size */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px; /* Moderate padding */
+    border: 1px solid #d1e7e0; /* Light Teal Border */
+    border-radius: 8px; /* Balanced radius */
+    font-size: 16px; /* Balanced font size */
+    background-color: #e5f7f4; /* Very Light Teal */
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #006e6d; /* Teal Border */
+    box-shadow: 0 0 8px rgba(0, 110, 109, 0.3); /* Teal Glow */
+}
+
+.btn {
+    width: 100%;
+    padding: 12px; /* Moderate padding */
+    background-color: #006e6d; /* Teal Button */
+    border: none;
+    border-radius: 8px; /* Balanced radius */
+    color: #ffffff;
+    font-size: 16px; /* Moderate font size */
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #005453; /* Darker Teal */
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 15px; /* Moderate margin */
+    font-size: 14px; /* Balanced font size */
+}
+
+.form-footer a {
+    color: #ff4f58; /* Coral Link */
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}

@@ -10,6 +10,7 @@ body {
     color: white;
     padding: 20px;
     text-align: center;
+    position: relative; /* Nodig voor positionering van de profielsectie */
 }
 
 .main {
@@ -48,7 +49,7 @@ body {
     display: flex;
     overflow: hidden;
     width: 70%;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;    
     background-color: #f0f0f0;
     padding: 15px;
     border-radius: 10px;
@@ -93,23 +94,51 @@ body {
     display: none;
 }
 
-.auth-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Minder ruimte tussen de foto en de gebruikersnaam */
+    background-color: #ff7f00; /* Oranje achtergrond */
+    border: none; /* Geen rand */
+    box-shadow: none; /* Geen schaduw */
+    padding: 5px; /* Minder padding */
+    position: absolute; /* Zorg ervoor dat het profiel rechts staat */
+    top: 10px; /* Afstand van de bovenkant */
+    right: 20px; /* Afstand van de rechterkant */
+    border-radius: 18px;
 }
 
-.auth-buttons button {
-    background-color: #0056b3;
+.profile-username {
+    font-size: 14px; /* Kleinere tekst voor gebruikersnaam */
+    color: #000000; /* Zwarte tekst voor gebruikersnaam */
+    font-weight: bold; /* Normale gewicht */
+}
+
+
+.profile-photo {
+    width: 40px; /* Kleinere foto */
+    height: 40px; /* Zorg dat de hoogte overeenkomt */
+    border-radius: 50%; /* Rond maken */
+    object-fit: cover; /* Zorg dat de foto past */
+    border: 2px solid #ffffff; /* Witte rand voor contrast */
+}
+
+.logout-button {
+    background-color: #d9534f; /* Rood */
     color: white;
     border: none;
-    padding: 10px 20px;
-    margin-left: 10px;
+    padding: 6px 10px; /* Kleinere knop */
+    font-size: 12px; /* Kleinere tekstgrootte */
+    font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: 5px; /* Minder ruimte naast gebruikersnaam */
 }
 
-.auth-buttons button:hover {
-    background-color: #003d80;
+.logout-button:hover {
+    background-color: #c9302c; /* Donkerder rood bij hover */
 }
+
+
+

@@ -1,18 +1,34 @@
+<?php
+session_start(); // Zorg ervoor dat de sessie wordt gestart
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JZ Layout</title>
-    <link rel="stylesheet" href="HomepaginaMVC.css">
+    <link rel="stylesheet" href="../css/HomepaginaMVC.css">
 </head>
 <body>
     <header class="header">
         <h1>JZ</h1>
-        <div class="auth-buttons">
-            <button class="login-button" onclick="location.href='login.html'">Login</button>
-            <button class="register-button" onclick="location.href='register.html'">Register</button>
-        </div>
+        <div class="profile">
+    <img src="../images/default-profile.png" alt="Profielfoto" class="profile-photo">
+    <span class="profile-username">
+        <?php 
+        if (isset($_SESSION['gebruikersnaam'])) {
+            echo htmlspecialchars($_SESSION['gebruikersnaam']); // Gebruik de veilige methode
+        } else {
+            echo "Gast"; // Toon 'Gast' als er geen gebruiker is ingelogd
+        }
+
+        
+        ?>
+    </span>
+</div>
     </header>
     <main class="main">
         <section class="section clubs">
@@ -75,6 +91,9 @@
             </div>
         </section>
     </main>
-    <script src="index.js"></script>
+    <form action="logout.php" method="post" style="display: inline;">
+    <button type="submit" class="logout-button">Uitloggen</button>
+</form>
 </body>
+<script src="index.js"></script>
 </html>
