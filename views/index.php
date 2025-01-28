@@ -1,7 +1,25 @@
 <?php
 session_start(); // Zorg ervoor dat de sessie wordt gestart
 
+// Databaseverbinding
+$dsn = 'mysql:host=localhost;dbname=projectmvc';
+$username = 'root';
+$password = '';
+try {
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // Clubs ophalen
+    $stmtClubs = $pdo->query("SELECT * FROM clubs");
+    $clubs = $stmtClubs->fetchAll(PDO::FETCH_ASSOC);
+
+    // Spelers ophalen
+    $stmtPlayers = $pdo->query("SELECT * FROM players");
+    $players = $stmtPlayers->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    die("Fout bij het verbinden met de database: " . $e->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,19 +34,17 @@ session_start(); // Zorg ervoor dat de sessie wordt gestart
     <header class="header">
         <h1>JZ</h1>
         <div class="profile">
-    <img src="../images/default-profile.png" alt="Profielfoto" class="profile-photo">
-    <span class="profile-username">
-        <?php 
-        if (isset($_SESSION['gebruikersnaam'])) {
-            echo htmlspecialchars($_SESSION['gebruikersnaam']); // Gebruik de veilige methode
-        } else {
-            echo "Gast"; // Toon 'Gast' als er geen gebruiker is ingelogd
-        }
-
-        
-        ?>
-    </span>
-</div>
+            <img src="../images/default-profile.png" alt="Profielfoto" class="profile-photo">
+            <span class="profile-username">
+                <?php 
+                if (isset($_SESSION['gebruikersnaam'])) {
+                    echo htmlspecialchars($_SESSION['gebruikersnaam']); // Gebruik de veilige methode
+                } else {
+                    echo "Gast"; // Toon 'Gast' als er geen gebruiker is ingelogd
+                }
+                ?>
+            </span>
+        </div>
     </header>
     <main class="main">
         <section class="section clubs">
@@ -36,16 +52,9 @@ session_start(); // Zorg ervoor dat de sessie wordt gestart
             <div class="carousel">
                 <button class="arrow left" onclick="scrollCarousel('clubs', -1)">&#9664;</button>
                 <div class="items" id="clubs">
-                    <div class="item">Club 1</div>
-                    <div class="item">Club 2</div>
-                    <div class="item">Club 3</div>
-                    <div class="item">Club 4</div>
-                    <div class="item">Club 5</div>
-                    <div class="item">Club 6</div>
-                    <div class="item">Club 7</div>
-                    <div class="item">Club 8</div>
-                    <div class="item hidden">Club 9</div>
-                    <div class="item hidden">Club 10</div>
+                    <?php foreach ($clubs as $club): ?>
+                        <div class="item"><?= htmlspecialchars($club['name']) ?></div>
+                    <?php endforeach; ?>
                 </div>
                 <button class="arrow right" onclick="scrollCarousel('clubs', 1)">&#9654;</button>
             </div>
@@ -56,44 +65,17 @@ session_start(); // Zorg ervoor dat de sessie wordt gestart
             <div class="carousel">
                 <button class="arrow left" onclick="scrollCarousel('spelers', -1)">&#9664;</button>
                 <div class="items" id="spelers">
-                    <div class="item">Speler 1</div>
-                    <div class="item">Speler 2</div>
-                    <div class="item">Speler 3</div>
-                    <div class="item">Speler 4</div>
-                    <div class="item">Speler 5</div>
-                    <div class="item">Speler 6</div>
-                    <div class="item">Speler 7</div>
-                    <div class="item">Speler 8</div>
-                    <div class="item hidden">Speler 9</div>
-                    <div class="item hidden">Speler 10</div>
+                    <?php foreach ($players as $player): ?>
+                        <div class="item"><?= htmlspecialchars($player['name']) ?></div>
+                    <?php endforeach; ?>
                 </div>
                 <button class="arrow right" onclick="scrollCarousel('spelers', 1)">&#9654;</button>
             </div>
         </section>
-        <hr>
-        <section class="section wedstrijden">
-            <h2>Wedstrijden</h2>
-            <div class="carousel">
-                <button class="arrow left" onclick="scrollCarousel('wedstrijden', -1)">&#9664;</button>
-                <div class="items" id="wedstrijden">
-                    <div class="item">Wedstrijd 1</div>
-                    <div class="item">Wedstrijd 2</div>
-                    <div class="item">Wedstrijd 3</div>
-                    <div class="item">Wedstrijd 4</div>
-                    <div class="item">Wedstrijd 5</div>
-                    <div class="item">Wedstrijd 6</div>
-                    <div class="item">Wedstrijd 7</div>
-                    <div class="item">Wedstrijd 8</div>
-                    <div class="item hidden">Wedstrijd 9</div>
-                    <div class="item hidden">Wedstrijd 10</div>
-                </div>
-                <button class="arrow right" onclick="scrollCarousel('wedstrijden', 1)">&#9654;</button>
-            </div>
-        </section>
     </main>
     <form action="logout.php" method="post" style="display: inline;">
-    <button type="submit" class="logout-button">Uitloggen</button>
-</form>
+        <button type="submit" class="logout-button">Uitloggen</button>
+    </form>
 </body>
 <script src="index.js"></script>
 </html>
