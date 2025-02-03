@@ -2,33 +2,31 @@
     require_once '../config/database.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Ontvang ingevoerde gegevens van het formulier
+     
         $gebruikersnaam = $_POST['gebruikersnaam'];
         $wachtwoord = $_POST['wachtwoord'];
         $db = new Database();
         $conn = $db->getConnection();
 
-        // Controleer of gebruikersnaam en wachtwoord niet leeg zijn
+      
         if (!empty($gebruikersnaam) && !empty($wachtwoord)) {
             try {
-                // Bereid een SQL-statement voor om de gebruiker op te zoeken
+          
                 $query = "SELECT * FROM users WHERE gebruikersnaam = :gebruikersnaam";
                 $stmt = $conn->prepare($query);
                 $stmt->bindParam(':gebruikersnaam', $gebruikersnaam);
                 $stmt->execute();
 
-                // Controleer of de gebruiker bestaat
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 if ($user) {
-                    // Vergelijk het ingevoerde wachtwoord met het gehashte wachtwoord
+                   
                     if (password_verify($wachtwoord, $user['wachtwoord'])) {
-                        // Start de sessie en sla gebruikersgegevens op
+
                         session_start();
                         $_SESSION['user_id'] = $user['id'];
                         $_SESSION['gebruikersnaam'] = $user['gebruikersnaam'];
 
-                        // Redirect naar een welkomstpagina of dashboard
                         header("Location: index.php");
                         exit();
                     } else {

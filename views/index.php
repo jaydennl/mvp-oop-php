@@ -1,7 +1,7 @@
 <?php
-session_start(); // Zorg ervoor dat de sessie wordt gestart
+session_start(); 
 
-// Databaseverbinding
+
 $dsn = 'mysql:host=localhost;dbname=projectmvc';
 $username = 'root';
 $password = '';
@@ -9,11 +9,11 @@ try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Clubs ophalen
+  
     $stmtClubs = $pdo->query("SELECT * FROM clubs");
     $clubs = $stmtClubs->fetchAll(PDO::FETCH_ASSOC);
 
-    // Spelers ophalen
+
     $stmtPlayers = $pdo->query("SELECT * FROM players");
     $players = $stmtPlayers->fetchAll(PDO::FETCH_ASSOC);
 
@@ -38,9 +38,9 @@ try {
             <span class="profile-username">
                 <?php 
                 if (isset($_SESSION['gebruikersnaam'])) {
-                    echo htmlspecialchars($_SESSION['gebruikersnaam']); // Gebruik de veilige methode
+                    echo htmlspecialchars($_SESSION['gebruikersnaam']);
                 } else {
-                    echo "Gast"; // Toon 'Gast' als er geen gebruiker is ingelogd
+                    echo "Gast";
                 }
                 ?>
             </span>

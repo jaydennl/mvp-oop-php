@@ -9,7 +9,7 @@
 
         if (!empty($gebruikersnaam) && !empty($wachtwoord)) {
             try {
-                // Check if the username already exists
+             
                 $checkQuery = "SELECT * FROM users WHERE gebruikersnaam = :gebruikersnaam";
                 $checkStmt = $conn->prepare($checkQuery);
                 $checkStmt->bindParam(':gebruikersnaam', $gebruikersnaam);
@@ -18,19 +18,18 @@
                 if ($checkStmt->rowCount() > 0) {
                     $error = "Gebruikersnaam bestaat al. Kies een andere.";
                 } else {
-                    // Insert the new user
+           
                     $query = "INSERT INTO users (gebruikersnaam, wachtwoord) VALUES (:gebruikersnaam, :wachtwoord)";
                     $stmt = $conn->prepare($query);
                     $stmt->bindParam(':gebruikersnaam', $gebruikersnaam);
                     $stmt->bindParam(':wachtwoord', $hashedWachtwoord);
                     $stmt->execute();
 
-                    // Automatically log in the user
+                
                     $userId = $conn->lastInsertId();
                     $_SESSION['user_id'] = $userId;
                     $_SESSION['gebruikersnaam'] = $gebruikersnaam;
 
-                    // Redirect to the homepage
                     header("Location: ../views/index2.php");
                     exit();
                 }

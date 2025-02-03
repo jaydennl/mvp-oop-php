@@ -2,8 +2,8 @@
 class Database {
     private $host = "localhost";
     private $db_name = "projectmvc";
-    private $username = "root"; // Pas aan met jouw DB-gebruiker
-    private $password = ""; // Pas aan met jouw DB-wachtwoord
+    private $username = "root"; 
+    private $password = ""; 
     public $conn;
 
     public function getConnection() {
